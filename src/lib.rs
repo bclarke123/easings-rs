@@ -36,17 +36,17 @@ pub fn in_out_quad<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Di
     -c / 2.0.into() * (x * (x - 2.0.into()) - 1.0.into()) + b
 }
 
-pub fn in_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn in_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy {
     let x = t / d;
     c * x * x * x + b
 }
 
-pub fn out_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + PartialOrd {
+pub fn out_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> {
     let x = t / d - 1.0.into();
     c * (x * x * x + 1.0.into()) + b
 }
 
-pub fn in_out_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn in_out_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + PartialOrd {
     let x = t / (d / 2.0.into());
 
     if x < 1.0.into() {
@@ -57,17 +57,17 @@ pub fn in_out_cubic<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + D
     c / 2.0.into() * (x * x * x + 2.0.into()) + b
 }
 
-pub fn in_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn in_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy {
     let x = t / d;
     c * x * x * x * x + b
 }
 
-pub fn out_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn out_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> {
     let x = t / d - 1.0.into();
     -c * (x * x * x * x - 1.0.into()) + b
 }
 
-pub fn in_out_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn in_out_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + PartialOrd {
     let x = t / (d / 2.0.into());
 
     if x < 1.0.into() {
@@ -78,17 +78,17 @@ pub fn in_out_quart<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + D
     -c / 2.0.into() * (x * x * x * x - 2.0.into()) + b
 }
 
-pub fn in_quint<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn in_quint<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy {
     let t = t / d;
     c * t * t * t * t * t + b
 }
 
-pub fn out_quint<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn out_quint<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> {
     let t = t / d - 1.0.into();
     c * (t * t * t * t * t + 1.0.into()) + b
 }
 
-pub fn in_out_quint<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + Ord {
+pub fn in_out_quint<T>(t: T, b: T, c: T, d: T) -> T where T: Mul<Output = T> + Div<Output = T> + Add<Output = T> + Sub<Output = T> + Neg<Output = T> + Copy + From<f32> + PartialOrd {
     let t = t / (d / 2.0.into());
 
     if t < 1.0.into() {
